@@ -23,6 +23,7 @@ class LoggingInterceptors {
 
   Future<RequestOptions> onRequest(RequestOptions options) async {
     print("on request");
+    print(options.path);
     return options;
   }
 
@@ -36,6 +37,8 @@ class LoggingInterceptors {
     print("<-- End error");
     if (dioError.response?.statusCode == 417) {
       throw Exception(ErrorMessage.errorFormValidation);
+    }else if(dioError.response?.statusCode==404){
+      throw Exception(dioError.response?.data['results']??dioError.response?.data['message']);
     }
   }
   Future onResponse(Response response) async {

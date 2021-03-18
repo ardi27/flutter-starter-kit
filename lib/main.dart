@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:starter_kit/core/config/routes.gr.dart' as router;
 import 'package:starter_kit/core/config/service_locator.dart';
 import 'package:starter_kit/core/constants/Strings.dart';
@@ -18,11 +19,6 @@ class MyApp extends StatelessWidget {
   final _appRouter=router.Router();
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-        systemNavigationBarDividerColor: Colors.white.withOpacity(0),
-        statusBarColor: Themes.kPrimaryColor,
-        systemNavigationBarIconBrightness: Brightness.dark,
-        statusBarIconBrightness: Brightness.dark));
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
     return MaterialApp.router(
@@ -32,7 +28,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primaryColor: Themes.kPrimaryColor,
-
+        inputDecorationTheme: Themes.inputDecorationTheme,
+        appBarTheme: Themes.appBarTheme,
+        textTheme: GoogleFonts.latoTextTheme(Theme.of(context).textTheme),
       ),
     );
   }

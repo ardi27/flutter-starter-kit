@@ -18,6 +18,7 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginState.success());
       authenticationCubit.login(token: token);
     }catch(e){
+      emit(LoginState.failure(message: e.toString()));
       print(e.toString());
     }
   }

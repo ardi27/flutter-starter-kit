@@ -24,11 +24,10 @@ class Router extends _i1.RootStackRouter {
           fullscreenDialog: false);
     },
     DashboardRoute.name: (entry) {
-      var args = entry.routeData
-          .argsAs<DashboardRouteArgs>(orElse: () => DashboardRouteArgs());
+      var args = entry.routeData.argsAs<DashboardRouteArgs>();
       return _i1.MaterialPageX(
           entry: entry,
-          child: _i3.Dashboard(key: args.key, welcome: args.welcome),
+          child: _i3.Dashboard(key: args.key, index: args.index),
           maintainState: true,
           fullscreenDialog: false);
     },
@@ -59,24 +58,24 @@ class SplashScreenRoute extends _i1.PageRouteInfo {
 }
 
 class DashboardRoute extends _i1.PageRouteInfo<DashboardRouteArgs> {
-  DashboardRoute({this.key, this.welcome})
+  DashboardRoute({this.key, required this.index})
       : super(name,
             path: '/dashboard',
-            args: DashboardRouteArgs(key: key, welcome: welcome));
+            args: DashboardRouteArgs(key: key, index: index));
 
   final _i5.Key? key;
 
-  final String? welcome;
+  final int index;
 
   static const String name = 'DashboardRoute';
 }
 
 class DashboardRouteArgs {
-  const DashboardRouteArgs({this.key, this.welcome});
+  const DashboardRouteArgs({this.key, required this.index});
 
   final _i5.Key? key;
 
-  final String? welcome;
+  final int index;
 }
 
 class LoginRoute extends _i1.PageRouteInfo {
